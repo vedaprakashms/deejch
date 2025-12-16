@@ -1,0 +1,229 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler
+                                      3 ; Version 4.5.0 #15242 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module usb_mouse
+                                      6 	
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _HID_sendReport
+                                     12 	.globl _HID_report
+                                     13 	.globl _EP1_buffer
+                                     14 	.globl _EP0_buffer
+                                     15 	.globl _MOUSE_move_PARM_2
+                                     16 	.globl _MOUSE_press
+                                     17 	.globl _MOUSE_release
+                                     18 	.globl _MOUSE_move
+                                     19 	.globl _MOUSE_wheel
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function registers
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; special function bits
+                                     27 ;--------------------------------------------------------
+                                     28 	.area RSEG    (ABS,DATA)
+      000000                         29 	.org 0x0000
+                                     30 ;--------------------------------------------------------
+                                     31 ; overlayable register banks
+                                     32 ;--------------------------------------------------------
+                                     33 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         34 	.ds 8
+                                     35 ;--------------------------------------------------------
+                                     36 ; internal ram data
+                                     37 ;--------------------------------------------------------
+                                     38 	.area DSEG    (DATA)
+      000000                         39 _MOUSE_move_PARM_2:
+      000000                         40 	.ds 1
+                                     41 ;--------------------------------------------------------
+                                     42 ; overlayable items in internal ram
+                                     43 ;--------------------------------------------------------
+                                     44 ;--------------------------------------------------------
+                                     45 ; indirectly addressable internal ram data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area ISEG    (DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; absolute internal ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area IABS    (ABS,DATA)
+                                     52 	.area IABS    (ABS,DATA)
+                                     53 ;--------------------------------------------------------
+                                     54 ; bit data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area BSEG    (BIT)
+                                     57 ;--------------------------------------------------------
+                                     58 ; paged external ram data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area PSEG    (PAG,XDATA)
+                                     61 ;--------------------------------------------------------
+                                     62 ; uninitialized external ram data
+                                     63 ;--------------------------------------------------------
+                                     64 	.area XSEG    (XDATA)
+                           000000    65 _EP0_buffer	=	0x0000
+                           00000A    66 _EP1_buffer	=	0x000a
+      000000                         67 _HID_report::
+      000000                         68 	.ds 4
+                                     69 ;--------------------------------------------------------
+                                     70 ; absolute external ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XABS    (ABS,XDATA)
+                                     73 ;--------------------------------------------------------
+                                     74 ; initialized external ram data
+                                     75 ;--------------------------------------------------------
+                                     76 	.area HOME    (CODE)
+                                     77 	.area GSINIT0 (CODE)
+                                     78 	.area GSINIT1 (CODE)
+                                     79 	.area GSINIT2 (CODE)
+                                     80 	.area GSINIT3 (CODE)
+                                     81 	.area GSINIT4 (CODE)
+                                     82 	.area GSINIT5 (CODE)
+                                     83 	.area GSINIT  (CODE)
+                                     84 	.area GSFINAL (CODE)
+                                     85 	.area CSEG    (CODE)
+                                     86 ;--------------------------------------------------------
+                                     87 ; global & static initialisations
+                                     88 ;--------------------------------------------------------
+                                     89 	.area HOME    (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 	.area GSFINAL (CODE)
+                                     92 	.area GSINIT  (CODE)
+                                     93 ;	src/usb_mouse.c:25: __xdata HID_MOUSE_REPORT_TYPE HID_report = {
+      000000 90r00r00         [24]   94 	mov	dptr,#_HID_report
+      000003 E4               [12]   95 	clr	a
+      000004 F0               [24]   96 	movx	@dptr,a
+      000005 90r00r01         [24]   97 	mov	dptr,#(_HID_report + 0x0001)
+      000008 F0               [24]   98 	movx	@dptr,a
+      000009 90r00r02         [24]   99 	mov	dptr,#(_HID_report + 0x0002)
+      00000C F0               [24]  100 	movx	@dptr,a
+      00000D 90r00r03         [24]  101 	mov	dptr,#(_HID_report + 0x0003)
+      000010 F0               [24]  102 	movx	@dptr,a
+                                    103 ;--------------------------------------------------------
+                                    104 ; Home
+                                    105 ;--------------------------------------------------------
+                                    106 	.area HOME    (CODE)
+                                    107 	.area HOME    (CODE)
+                                    108 ;--------------------------------------------------------
+                                    109 ; code
+                                    110 ;--------------------------------------------------------
+                                    111 	.area CSEG    (CODE)
+                                    112 ;------------------------------------------------------------
+                                    113 ;Allocation info for local variables in function 'MOUSE_press'
+                                    114 ;------------------------------------------------------------
+                                    115 ;buttons       Allocated to registers r7 
+                                    116 ;------------------------------------------------------------
+                                    117 ;	src/usb_mouse.c:37: void MOUSE_press(uint8_t buttons) {
+                                    118 ;	-----------------------------------------
+                                    119 ;	 function MOUSE_press
+                                    120 ;	-----------------------------------------
+      000000                        121 _MOUSE_press:
+                           000007   122 	ar7 = 0x07
+                           000006   123 	ar6 = 0x06
+                           000005   124 	ar5 = 0x05
+                           000004   125 	ar4 = 0x04
+                           000003   126 	ar3 = 0x03
+                           000002   127 	ar2 = 0x02
+                           000001   128 	ar1 = 0x01
+                           000000   129 	ar0 = 0x00
+      000000 AF 82            [24]  130 	mov	r7, dpl
+                                    131 ;	src/usb_mouse.c:38: MOUSE_report->buttons |= buttons;   // press button(s)
+      000002 90r00r00         [24]  132 	mov	dptr,#_HID_report
+      000005 E0               [24]  133 	movx	a,@dptr
+      000006 42 07            [12]  134 	orl	ar7,a
+      000008 90r00r00         [24]  135 	mov	dptr,#_HID_report
+      00000B EF               [12]  136 	mov	a,r7
+      00000C F0               [24]  137 	movx	@dptr,a
+                                    138 ;	src/usb_mouse.c:39: MOUSE_sendReport();                 // send HID report
+      00000D 75*00 04         [24]  139 	mov	_HID_sendReport_PARM_2,#0x04
+      000010 90r00r00         [24]  140 	mov	dptr,#_HID_report
+                                    141 ;	src/usb_mouse.c:40: }
+      000013 02r00r00         [24]  142 	ljmp	_HID_sendReport
+                                    143 ;------------------------------------------------------------
+                                    144 ;Allocation info for local variables in function 'MOUSE_release'
+                                    145 ;------------------------------------------------------------
+                                    146 ;buttons       Allocated to registers r7 
+                                    147 ;------------------------------------------------------------
+                                    148 ;	src/usb_mouse.c:43: void MOUSE_release(uint8_t buttons) {
+                                    149 ;	-----------------------------------------
+                                    150 ;	 function MOUSE_release
+                                    151 ;	-----------------------------------------
+      000016                        152 _MOUSE_release:
+      000016 AF 82            [24]  153 	mov	r7, dpl
+                                    154 ;	src/usb_mouse.c:44: MOUSE_report->buttons &= ~buttons;  // release button(s)
+      000018 90r00r00         [24]  155 	mov	dptr,#_HID_report
+      00001B E0               [24]  156 	movx	a,@dptr
+      00001C FE               [12]  157 	mov	r6,a
+      00001D EF               [12]  158 	mov	a,r7
+      00001E F4               [12]  159 	cpl	a
+      00001F 52 06            [12]  160 	anl	ar6,a
+      000021 90r00r00         [24]  161 	mov	dptr,#_HID_report
+      000024 EE               [12]  162 	mov	a,r6
+      000025 F0               [24]  163 	movx	@dptr,a
+                                    164 ;	src/usb_mouse.c:45: MOUSE_sendReport();                 // send HID report
+      000026 75*00 04         [24]  165 	mov	_HID_sendReport_PARM_2,#0x04
+      000029 90r00r00         [24]  166 	mov	dptr,#_HID_report
+                                    167 ;	src/usb_mouse.c:46: }
+      00002C 02r00r00         [24]  168 	ljmp	_HID_sendReport
+                                    169 ;------------------------------------------------------------
+                                    170 ;Allocation info for local variables in function 'MOUSE_move'
+                                    171 ;------------------------------------------------------------
+                                    172 ;yrel          Allocated with name '_MOUSE_move_PARM_2'
+                                    173 ;xrel          Allocated to registers r7 
+                                    174 ;------------------------------------------------------------
+                                    175 ;	src/usb_mouse.c:49: void MOUSE_move(int8_t xrel, int8_t yrel) {
+                                    176 ;	-----------------------------------------
+                                    177 ;	 function MOUSE_move
+                                    178 ;	-----------------------------------------
+      00002F                        179 _MOUSE_move:
+      00002F AF 82            [24]  180 	mov	r7, dpl
+                                    181 ;	src/usb_mouse.c:50: MOUSE_report->xmove = xrel;         // set relative x-movement
+      000031 90r00r01         [24]  182 	mov	dptr,#(_HID_report + 0x0001)
+      000034 EF               [12]  183 	mov	a,r7
+      000035 F0               [24]  184 	movx	@dptr,a
+                                    185 ;	src/usb_mouse.c:51: MOUSE_report->ymove = yrel;         // set relative y-movement
+      000036 90r00r02         [24]  186 	mov	dptr,#(_HID_report + 0x0002)
+      000039 E5*00            [12]  187 	mov	a,_MOUSE_move_PARM_2
+      00003B F0               [24]  188 	movx	@dptr,a
+                                    189 ;	src/usb_mouse.c:52: MOUSE_sendReport();                 // send HID report
+      00003C 75*00 04         [24]  190 	mov	_HID_sendReport_PARM_2,#0x04
+      00003F 90r00r00         [24]  191 	mov	dptr,#_HID_report
+      000042 12r00r00         [24]  192 	lcall	_HID_sendReport
+                                    193 ;	src/usb_mouse.c:53: MOUSE_report->xmove = 0;            // reset movements
+      000045 90r00r01         [24]  194 	mov	dptr,#(_HID_report + 0x0001)
+      000048 E4               [12]  195 	clr	a
+      000049 F0               [24]  196 	movx	@dptr,a
+                                    197 ;	src/usb_mouse.c:54: MOUSE_report->ymove = 0;
+      00004A 90r00r02         [24]  198 	mov	dptr,#(_HID_report + 0x0002)
+      00004D F0               [24]  199 	movx	@dptr,a
+                                    200 ;	src/usb_mouse.c:55: }
+      00004E 22               [24]  201 	ret
+                                    202 ;------------------------------------------------------------
+                                    203 ;Allocation info for local variables in function 'MOUSE_wheel'
+                                    204 ;------------------------------------------------------------
+                                    205 ;rel           Allocated to registers r7 
+                                    206 ;------------------------------------------------------------
+                                    207 ;	src/usb_mouse.c:58: void MOUSE_wheel(int8_t rel) {
+                                    208 ;	-----------------------------------------
+                                    209 ;	 function MOUSE_wheel
+                                    210 ;	-----------------------------------------
+      00004F                        211 _MOUSE_wheel:
+      00004F AF 82            [24]  212 	mov	r7, dpl
+                                    213 ;	src/usb_mouse.c:59: MOUSE_report->wmove = rel;          // set relative wheel movement
+      000051 90r00r03         [24]  214 	mov	dptr,#(_HID_report + 0x0003)
+      000054 EF               [12]  215 	mov	a,r7
+      000055 F0               [24]  216 	movx	@dptr,a
+                                    217 ;	src/usb_mouse.c:60: MOUSE_sendReport();                 // send HID report
+      000056 75*00 04         [24]  218 	mov	_HID_sendReport_PARM_2,#0x04
+      000059 90r00r00         [24]  219 	mov	dptr,#_HID_report
+      00005C 12r00r00         [24]  220 	lcall	_HID_sendReport
+                                    221 ;	src/usb_mouse.c:61: MOUSE_report->wmove = 0;            // reset movements
+      00005F 90r00r03         [24]  222 	mov	dptr,#(_HID_report + 0x0003)
+      000062 E4               [12]  223 	clr	a
+      000063 F0               [24]  224 	movx	@dptr,a
+                                    225 ;	src/usb_mouse.c:62: }
+      000064 22               [24]  226 	ret
+                                    227 	.area CSEG    (CODE)
+                                    228 	.area CONST   (CODE)
+                                    229 	.area CABS    (ABS,CODE)

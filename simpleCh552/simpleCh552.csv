@@ -1,0 +1,13 @@
+Reference,Value,Footprint,Datasheet,Qty,DNP,Exclude from BOM,Exclude from Board
+"C1,C2",100n,Capacitor_SMD:C_0603_1608Metric,~,2,,,
+C3,100n,Capacitor_SMD:C_0402_1005Metric,~,1,,,
+"D1,D2",LED,LED_SMD:LED_1206_3216Metric,~,2,,,
+J1,Conn_01x02_Pin,Connector_PinHeader_2.00mm:PinHeader_2x01_P2.00mm_Vertical_SMD,~,1,,,
+J2,left,Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical,~,1,,,
+J3,Conn_01x03_Pin,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,~,1,,,
+R1,10k,Resistor_SMD:R_0603_1608Metric,~,1,,,
+"R2,R3",1k,Resistor_SMD:R_0603_1608Metric,~,2,,,
+SW1,SW_SPST,Button_Switch_SMD:SW_Tactile_SPST_NO_Straight_CK_PTS636Sx25SMTRLFS,~,1,,,
+TP1,TestPoint,TestPoint:TestPoint_Keystone_5019_Miniature,~,1,,,
+U1,CH552G,mylib:SOP-16_L10.0-W3.9-P1.27-LS6.0-BL,https://lcsc.com/product-detail/USB_CH552G_C111292.html,1,,,
+USB1,MICROQTJ,mylib:MICRO-USB-SMD_MICROQTJ-5P,https://lcsc.com/product-detail/USB-Connectors_SHOU-HAN-MicroQTJ_C404968.html,1,,,

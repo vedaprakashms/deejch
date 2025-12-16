@@ -1,0 +1,23 @@
+-muwx
+-i C:\Users\vedap\AppData\Local\arduino\sketches\2D5869F389374339519535CD84C3F817/sketch_oct23a.ino.elf
+-M
+-X 0x036c
+-C 0x3800
+-b HOME = 0x0000
+-b XSEG = 0x0094
+-b PSEG = 0x0094
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-k C:\Users\vedap\AppData\Local\arduino\sketches\2D5869F389374339519535CD84C3F817
+-k C:\Users\vedap\AppData\Local\Arduino15\packages\CH55xDuino\tools\sdcc\build.13407_4/lib/large_int_calc_stack_auto
+-l C:\Users\vedap\AppData\Local\arduino\sketches\2D5869F389374339519535CD84C3F817/..\..\cores\193e1f095c77adad6734fb8b8d055ddb\core.lib
+-l mcs51
+-l libsdcc
+-l liblong
+-l liblonglong
+-l libint
+-l libfloat
+C:\Users\vedap\AppData\Local\arduino\sketches\2D5869F389374339519535CD84C3F817\sketch\sketch_oct23a.ino.cpp.rel
+C:\Users\vedap\AppData\Local\arduino\sketches\2D5869F389374339519535CD84C3F817\libraries\TouchKey\TouchKey.c.rel
+
+-e
